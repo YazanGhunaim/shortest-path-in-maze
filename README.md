@@ -4,6 +4,8 @@ This is a simple maze solver program written in C++ using the Qt framework. The 
 
 # Showcase
 
+https://user-images.githubusercontent.com/87646431/231608537-883b37e7-f597-49ea-8ca8-73d7c32a0b0b.mp4
+
 # Installation
 
 To run this program, you will need to have the Qt framework installed on your computer. You can download Qt from the official website: https://www.qt.io/download.
