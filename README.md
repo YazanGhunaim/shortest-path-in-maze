@@ -21,7 +21,3 @@ The maze is displayed using a QGraphicsView widget. The walls of the maze are di
 # Contributing
 
 If you would like to contribute to this project, feel free to submit a pull request. Any contributions are welcome!
-
-# License
-
-This program is licensed under the MIT License. See the LICENSE file for more information.
