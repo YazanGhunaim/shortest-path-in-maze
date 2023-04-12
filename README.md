@@ -1,6 +1,6 @@
 # Maze Solver
 
-This is a simple maze solver program written in C++ using the Qt framework. The program generates a random maze and then uses a breadth-first search algorithm to find the shortest path from the start to the target.
+This is a C++ GUI application that animates the process of finding the shortest path from start and end positions in a randomly generated maze
 
 # Showcase
 
