@@ -4,7 +4,7 @@ This is a C++ GUI application that animates the process of finding the shortest 
 
 # Showcase
 
-https://user-images.githubusercontent.com/87646431/231608537-883b37e7-f597-49ea-8ca8-73d7c32a0b0b.mp4
+https://user-images.githubusercontent.com/87646431/231890546-c89007c0-9e04-42fe-8e02-fc595c08e261.mp4
 
 # Installation
 
