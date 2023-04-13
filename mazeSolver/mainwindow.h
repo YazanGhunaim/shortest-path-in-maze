@@ -17,6 +17,8 @@ public:
     ~MainWindow();
 
 private slots:
+    void clear_comboBoxes();
+
     void extract_userData();
 
     void on_generateMaze_clicked();
@@ -28,5 +30,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     mazeSolver m_solver;
+    bool m_comboBoxesInitialized;
 };
 #endif // MAINWINDOW_H

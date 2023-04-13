@@ -7,27 +7,41 @@
 MainWindow::MainWindow(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::MainWindow)
+    , m_comboBoxesInitialized(false) // Initialize flag variable to false
 {
     ui->setupUi(this);
 }
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+void MainWindow::clear_comboBoxes()
+{
+    ui->inputStartx->clear();
+    ui->inputStarty->clear();
+    ui->inputEndx->clear();
+    ui->inputEndy->clear();
+}
+
 void MainWindow::initialize_comboBoxes(const size_t rows, const size_t cols)
 {
-    size_t i;
-    for(i = 0; i < rows; ++i)
+    if(!m_comboBoxesInitialized)
     {
-        ui->inputStartx->addItem(QString::number(i));
-        ui->inputEndx->addItem(QString::number(i));
-    }
-    for(i = 0; i < cols; ++i)
-    {
-        ui->inputStarty->addItem(QString::number(i));
-        ui->inputEndy->addItem(QString::number(i));
+        size_t i;
+        for(i = 0; i < rows; ++i)
+        {
+            ui->inputStartx->addItem(QString::number(i));
+            ui->inputEndx->addItem(QString::number(i));
+        }
+        for(i = 0; i < cols; ++i)
+        {
+            ui->inputStarty->addItem(QString::number(i));
+            ui->inputEndy->addItem(QString::number(i));
+        }
+        m_comboBoxesInitialized = true;
     }
 }
 
@@ -39,7 +53,7 @@ void MainWindow::extract_userData()
     QString selectedEndX = ui->inputEndx->currentText();
     QString selectedEndY = ui->inputEndy->currentText();
 
-    m_solver = mazeSolver(25,25,ui->graphicsView,selectedStartX.toInt(),selectedStartY.toInt(),selectedEndX.toInt(),selectedEndY.toInt());
+    m_solver = mazeSolver(20,20,ui->graphicsView,selectedStartX.toInt(),selectedStartY.toInt(),selectedEndX.toInt(),selectedEndY.toInt());
 }
 void MainWindow::on_generateMaze_clicked()
 {
