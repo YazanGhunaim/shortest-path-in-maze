@@ -26,9 +26,10 @@ public:
     static std::vector<CPoint> m_neighbors;
 
     mazeSolver() {}
-    mazeSolver(int rows, int cols);
+    mazeSolver(const size_t rows,const size_t cols, const QGraphicsView *view);
     void generate_maze();
     void print_maze() const;
+    void resetMaze_colors();
     void display_maze(QGraphicsView* view); // Function to display the maze
     void display_solution();
     bool bfs();

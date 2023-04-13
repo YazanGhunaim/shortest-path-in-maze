@@ -5,19 +5,22 @@
 
 std::vector<CPoint> mazeSolver::m_neighbors{{1,0},{0,1},{-1,0},{0,-1}};
 
-mazeSolver::mazeSolver(int rows, int cols) :  m_rows(rows), m_cols(cols), m_start(CPoint{2,3}), m_target(CPoint{13,19})
+mazeSolver::mazeSolver(const size_t rows, const size_t cols, const QGraphicsView *view) :  m_rows(rows), m_cols(cols), m_start(CPoint{2,3}), m_target(CPoint{13,19})
 {
     resetMaze();
-    m_maze.resize(rows,std::vector<char>(cols,'0'));
-    m_visited.resize(rows,std::vector<bool>(cols,false));
-    m_parent.resize(rows,std::vector<CPoint>(cols));
-    m_items.resize(m_rows, std::vector<QGraphicsRectItem*>(m_cols));
-
+    // initializing the m_items vector with rectItems
+    size_t cellSize = std::min(view->width() / m_cols , view ->height() / m_rows);
+    for(size_t i = 0; i < m_rows; ++i)
+    {
+        for(size_t j = 0; j < m_cols; ++j)
+        {
+            m_items[i][j] = new QGraphicsRectItem(j * cellSize, i * cellSize, cellSize, cellSize);
+        }
+    }
 }
 
 void mazeSolver::generate_maze()
 {
-    resetMaze();
     for(size_t i = 0; i < m_rows - 1; ++i)
     {
         for(size_t j = 0; j < m_cols - 1; ++j)
@@ -44,19 +47,24 @@ void mazeSolver::print_maze() const{
     std::cout << std::endl;
 }
 
+void mazeSolver::resetMaze_colors()
+{
+    for (size_t i = 0; i < m_rows; i++) {
+        for (size_t j = 0; j < m_cols; j++) {
+            if (m_maze[i][j] == '#') {
+                m_items[i][j]->setBrush(QBrush(Qt::black));
+            }
+            else{
+                m_items[i][j]->setBrush(QBrush(Qt::white));
+            }
+        }
+    }
+}
+
 // Function to display the maze
 void mazeSolver::display_maze(QGraphicsView* view){
     QGraphicsScene* scene = new QGraphicsScene(view);
     view->setScene(scene);
-
-    int cellSize = std::min(view->width() / m_cols, view->height() / m_rows);
-    for(size_t i = 0; i < m_rows; ++i)
-    {
-        for(size_t j = 0; j < m_cols; ++j)
-        {
-            m_items[i][j] = new QGraphicsRectItem(j * cellSize, i * cellSize, cellSize, cellSize);
-        }
-    }
 
     // Create a QGraphicsRectItem for each cell in the maze
     for (size_t i = 0; i < m_rows; i++) {
@@ -64,10 +72,10 @@ void mazeSolver::display_maze(QGraphicsView* view){
             if (m_maze[i][j] == '#') {
                 m_items[i][j]->setBrush(QBrush(Qt::black)); // Set color to black for walls
             } else if (m_visited[i][j]) {
-                m_items[i][j]->setBrush(QBrush(Qt::green)); // Set color to white for open spaces
+                m_items[i][j]->setBrush(QBrush(Qt::yellow)); // for visited spaces
             }
             else{
-                m_items[i][j]->setBrush(QBrush(Qt::white));
+                m_items[i][j]->setBrush(QBrush(Qt::white)); // Set color to white for open spaces
             }
             scene->addItem(m_items[i][j]);
         }
@@ -94,16 +102,7 @@ bool mazeSolver::bfs()
         if(current == m_target)
         {
             std::cout << "SOLUTION FOUND" << std::endl;
-            for (size_t i = 0; i < m_rows; i++) {
-                for (size_t j = 0; j < m_cols; j++) {
-                    if (m_maze[i][j] == '#') {
-                        m_items[i][j]->setBrush(QBrush(Qt::black)); // Set color to black for walls
-                    }
-                    else{
-                        m_items[i][j]->setBrush(QBrush(Qt::white));
-                    }
-                }
-            }
+            resetMaze_colors();
             display_solution();
             return true;
         }
@@ -116,7 +115,7 @@ bool mazeSolver::bfs()
                 q.push(next_point);
                 m_visited[next_point.x()][next_point.y()] =  true;
                 m_parent[next_point.x()][next_point.y()] = current;
-                m_items[next_point.x()][next_point.y()]->setBrush(QBrush(Qt::green));
+                m_items[next_point.x()][next_point.y()]->setBrush(QBrush(Qt::yellow));
             }
         }
 
@@ -124,7 +123,7 @@ bool mazeSolver::bfs()
         if(elapsed < 25)
         {
             QCoreApplication::processEvents(QEventLoop::AllEvents, 15); // process any pending events in the event loop
-            QThread::msleep(25 - elapsed); // wait for 0.5 seconds before continuing the while loop
+            QThread::msleep(25 - elapsed); // wait for 25ms before continuing the while loop
         }
         timer.restart();
     }
@@ -155,12 +154,12 @@ void mazeSolver::display_solution()
 
 // Function to reset the maze
 void mazeSolver::resetMaze() {
-    m_items.clear();
-    m_items.resize(m_rows,std::vector<QGraphicsRectItem*>(m_cols));
     m_maze.clear(); // Clear the maze data structure
     m_maze.resize(m_rows, std::vector<char>(m_cols, '0')); // Resize the maze to the correct dimensions
     m_visited.clear(); // Clear the visited data structure
     m_visited.resize(m_rows, std::vector<bool>(m_cols, false)); // Resize the visited data structure to the correct dimensions
     m_parent.clear(); // Clear the parent data structure
     m_parent.resize(m_rows, std::vector<CPoint>(m_cols)); // Resize the parent data structure to the correct dimensions
+    m_items.clear();
+    m_items.resize(m_rows,std::vector<QGraphicsRectItem*>(m_cols));
 }

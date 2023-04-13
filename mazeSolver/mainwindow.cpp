@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_generateMaze_clicked()
 {
-    m_solver = mazeSolver(20,20);
+    m_solver = mazeSolver(25,25,ui->graphicsView);
     m_solver.generate_maze();
     m_solver.display_maze(ui->graphicsView);
 }
