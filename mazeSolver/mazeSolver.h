@@ -27,6 +27,9 @@ public:
 
     mazeSolver() {}
     mazeSolver(const size_t rows,const size_t cols, const QGraphicsView *view);
+    mazeSolver(const size_t rows,const size_t cols, const QGraphicsView *view, const int startX, const int startY, const int endX, const int endY);
+    size_t rows() const {return m_rows;}
+    size_t cols() const {return m_cols;}
     void generate_maze();
     void print_maze() const;
     void resetMaze_colors();

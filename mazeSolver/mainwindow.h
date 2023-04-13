@@ -17,9 +17,13 @@ public:
     ~MainWindow();
 
 private slots:
+    void extract_userData();
+
     void on_generateMaze_clicked();
 
     void on_findPath_clicked();
+
+    void initialize_comboBoxes(const size_t rows, const size_t cols);
 
 private:
     Ui::MainWindow *ui;

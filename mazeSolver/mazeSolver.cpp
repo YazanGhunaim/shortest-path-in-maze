@@ -5,9 +5,14 @@
 
 std::vector<CPoint> mazeSolver::m_neighbors{{1,0},{0,1},{-1,0},{0,-1}};
 
-mazeSolver::mazeSolver(const size_t rows, const size_t cols, const QGraphicsView *view) :  m_rows(rows), m_cols(cols), m_start(CPoint{2,3}), m_target(CPoint{13,19})
+mazeSolver::mazeSolver(const size_t rows,const size_t cols, const QGraphicsView *view, const int startX, const int startY, const int endX, const int endY)
+    :  m_rows(rows), m_cols(cols)
 {
     resetMaze();
+
+    m_start = CPoint{startX,startY};
+    m_target = CPoint{endX,endY};
+
     // initializing the m_items vector with rectItems
     size_t cellSize = std::min(view->width() / m_cols , view ->height() / m_rows);
     for(size_t i = 0; i < m_rows; ++i)
@@ -72,7 +77,7 @@ void mazeSolver::display_maze(QGraphicsView* view){
             if (m_maze[i][j] == '#') {
                 m_items[i][j]->setBrush(QBrush(Qt::black)); // Set color to black for walls
             } else if (m_visited[i][j]) {
-                m_items[i][j]->setBrush(QBrush(Qt::yellow)); // for visited spaces
+                m_items[i][j]->setBrush(QBrush(Qt::blue)); // for visited spaces
             }
             else{
                 m_items[i][j]->setBrush(QBrush(Qt::white)); // Set color to white for open spaces
@@ -115,7 +120,7 @@ bool mazeSolver::bfs()
                 q.push(next_point);
                 m_visited[next_point.x()][next_point.y()] =  true;
                 m_parent[next_point.x()][next_point.y()] = current;
-                m_items[next_point.x()][next_point.y()]->setBrush(QBrush(Qt::yellow));
+                m_items[next_point.x()][next_point.y()]->setBrush(QBrush(Qt::blue));
             }
         }
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>531</width>
-    <height>504</height>
+    <width>591</width>
+    <height>516</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,14 +21,14 @@
     <rect>
      <x>10</x>
      <y>20</y>
-     <width>351</width>
-     <height>461</height>
+     <width>381</width>
+     <height>481</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
+      <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="titleLabel">
         <property name="text">
          <string>Maze Solver</string>
@@ -59,92 +59,114 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>110</y>
-     <width>131</width>
-     <height>241</height>
+     <x>420</x>
+     <y>90</y>
+     <width>130</width>
+     <height>267</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_8">
+   <layout class="QVBoxLayout" name="verticalLayout_9">
+    <item alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Grid Size</string>
+      </property>
+     </widget>
+    </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
+     <layout class="QVBoxLayout" name="verticalLayout_8">
       <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Start</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QSlider" name="horizontalSlider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <layout class="QVBoxLayout" name="verticalLayout_7">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QLabel" name="label_6">
-            <property name="text">
-             <string>x</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>y</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Start</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QComboBox" name="inputStartx"/>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QLabel" name="label_6">
+              <property name="text">
+               <string>x</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>y</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QComboBox" name="inputStarty"/>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QComboBox" name="inputStartx"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="inputStarty"/>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
        </layout>
       </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>end</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_6">
-          <item>
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>x</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_8">
-            <property name="text">
-             <string>y</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>End</string>
+          </property>
+         </widget>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_7">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QComboBox" name="inputEndx"/>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>x</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>y</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QComboBox" name="inputEndy"/>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QComboBox" name="inputEndx"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="inputEndy"/>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
