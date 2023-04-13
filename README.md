@@ -24,4 +24,4 @@ If you would like to contribute to this project, feel free to submit a pull requ
 
 # License
 
-This project is licensed under the MIT License, read the LICENSE.md for more information
+This project is licensed under the MIT License, read the LICENSE for more information
