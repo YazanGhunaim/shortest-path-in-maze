@@ -77,7 +77,7 @@ void mazeSolver::display_maze(QGraphicsView* view){
             if (m_maze[i][j] == '#') {
                 m_items[i][j]->setBrush(QBrush(Qt::black)); // Set color to black for walls
             } else if (m_visited[i][j]) {
-                m_items[i][j]->setBrush(QBrush(Qt::blue)); // for visited spaces
+                m_items[i][j]->setBrush(QBrush(Qt::green)); // for visited spaces
             }
             else{
                 m_items[i][j]->setBrush(QBrush(Qt::white)); // Set color to white for open spaces
@@ -120,7 +120,7 @@ bool mazeSolver::bfs()
                 q.push(next_point);
                 m_visited[next_point.x()][next_point.y()] =  true;
                 m_parent[next_point.x()][next_point.y()] = current;
-                m_items[next_point.x()][next_point.y()]->setBrush(QBrush(Qt::blue));
+                m_items[next_point.x()][next_point.y()]->setBrush(QBrush(Qt::green));
             }
         }
 
