@@ -1,6 +1,6 @@
 # Maze Solver
 
-This is a C++ GUI application that animates the process of finding the shortest path from start and end positions in a randomly generated maze
+C++ GUI application that visualizes the process of finding the shortest path from start and end positions in a randomly generated maze using the QT GUI framework
 
 # Showcase
 
